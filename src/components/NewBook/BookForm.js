@@ -8,7 +8,7 @@ const BookForm = (props) => {
                 event.preventDefault();
                 const bookData = {
                         title: enteredTitle,
-                        pages: enteredPages,
+                        pages: +enteredPages,
                         date: enteredDate
                 };
                 props.onSaveBookData(bookData);
