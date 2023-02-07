@@ -24,3 +24,10 @@
 .new-book__actions {
   text-align: right;
 }
+.new-book__control.invalid input {
+  border-color: red;
+  background-color: salmon;
+}
+.new-book__control.invalid label {
+  color: red;
+}
