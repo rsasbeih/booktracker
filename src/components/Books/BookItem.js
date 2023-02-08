@@ -1,3 +1,4 @@
+import React from 'react';
 import './BookItem.css';
 import BookDate from './BookDate';
 import Card from '../UI/Card';

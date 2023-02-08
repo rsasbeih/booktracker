@@ -1,5 +1,27 @@
 import React, { useState } from 'react';
 import './BookForm.css';
+import Button from '../UI/Button';
+import styled from 'styled-components';
+
+const FormControl = styled.div`
+& label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: ${props => (props.invalid ? 'red' : 'black')}
+}
+
+& input {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid ${props=> (props.invalid ? 'red' : '#ccc')};
+  background: ${props=> (props.invalid ? 'salmon' : 'white')};
+  width: 20rem;
+  max-width: 100%;
+}
+
+`;
 
 const BookForm = (props) => {
         const [enteredTitle, setEnteredTitle] = useState('');
@@ -66,15 +88,15 @@ const BookForm = (props) => {
         return (
                 <form onSubmit={submitHandler}>
                         <div className="new-book__controls">
-                                <div className={`new-book__control ${!isValidTitle ? 'invalid' : ''}`}>
+                                <FormControl invalid={!isValidTitle}>
                                         <label>Title</label>
                                         <input
                                                 type="text"
                                                 onChange={titleHandler}
                                                 value={enteredTitle}
                                         />
-                                </div>
-                                <div className={`new-book__control ${!isValidPages ? 'invalid' : ''}`}>
+                                </FormControl>
+                                <FormControl invalid={!isValidPages}>
                                         <label>Pages</label>
                                         <input
                                                 type="number"
@@ -83,8 +105,8 @@ const BookForm = (props) => {
                                                 onChange={pagesHandler}
                                                 value={enteredPages}
                                         />
-                                </div>
-                                <div className={`new-book__control ${!isValidDate ? 'invalid' : ''}`}>
+                                </FormControl>
+                                <FormControl invalid={!isValidDate}>
                                         <label>Date</label>
                                         <input
                                                 type="date"
@@ -93,10 +115,10 @@ const BookForm = (props) => {
                                                 onChange={dateHandler}
                                                 value={enteredDate}
                                         />
-                                </div>
+                                </FormControl>
                         </div>
                         <div className="new-book__actions">
-                                <button type="submit">Add book</button>
+                                <Button type="submit">Add book</Button>
                         </div>
                 </form>
         );
