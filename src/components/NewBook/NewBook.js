@@ -1,6 +1,5 @@
 import React from 'react';
-
-import './NewBook.css';
+import styles from './NewBook.module.css';
 
 import BookForm from './BookForm';
 
@@ -13,7 +12,7 @@ const NewBook = (props) => {
                 console.log(bookData);
                 props.onAddBook(bookData);
         }
-        return (<div className="new-book">
+        return (<div className={styles['new-book']}>
                 <BookForm onSaveBookData={saveBookDataHandler}></BookForm>
         </div>);
 }
